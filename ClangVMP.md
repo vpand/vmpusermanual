@@ -1,7 +1,7 @@
 # ClangVMP
-**ClangVMP** is a [Clang/LLVM](https://clang.llvm.org/) based code virtualized compiler. It encodes C/C++/ObjC/ObjC++/Swift/etc.(static native programming language) function into its private VMP data during compilation process. The VMP data will be directly interpreted by ClangVMP runtime library without restoring the original instructions. Because of this mechanism, reverse engineering on this kind of code will be much more harder than raw machine code.
+**ClangVMP** is a [Clang/LLVM](https://clang.llvm.org/) based code virtualized compiler. It encodes **C/C++/ObjC**/ObjC++/Swift/etc.(static native programming language) function into its private VMP data during compilation process. The VMP data will be directly interpreted by ClangVMP runtime library without restoring the original instructions. Because of this mechanism, reverse engineering on this kind of code will be much more harder than raw machine code.
 
-Till now, ClangVMP supports running on macOS, Windows and Linux. The following is a sample for version output on macOS installed to Xcode toolchain directory:
+Till now, ClangVMP supports running on **macOS, Windows and Linux**. The following is a sample for version output on macOS installed to Xcode toolchain directory:
 ```shell
 ClangVMP@vpand.com bin % ls -l
 total 352320
@@ -24,7 +24,21 @@ InstalledDir: /Applications/Xcode.app/Contents/Developer/Toolchains/ClangVMP.xct
 ```
 
 ## Download
+All of our products are hosted in vpand.com, you can download the assistant tool called VPAssistant to fetch your interested product like ClangVMP.
+
+Please note that you should download the exact platform and architecture which matches your current running OS, all the real product download through VPAssistant highly depends on the architecture that it's running on. For the native performance, you'd better not download x86_64 version on arm64 macOS even though it can directly run on it with Rosetta 2.
+
+![vpadownload](https://raw.githubusercontent.com/vpand/imgres/main/vpadownload.jpg)
 ## Install
+As the VPAssistant on different platform(like Windows, Linux and macOS) is absolutely the same, unless some feature is just available on that specified platform, otherwise all the generic feature screenshots are from macOS. Here we go.
+
+After download, unzip and launch VPAssistant, we're gonna be in the ClangVMP tab widget. The default installation path is(You can change it with the "..." button on the right):
+```
+macOS/Linux : ~/VPAssistant/product
+
+Windows     : SysDrive:\Users\user-name\VPAssistant\product
+```
+![vpaclangvmp](https://raw.githubusercontent.com/vpand/imgres/main/ultimatevmp/vpaclangvmp.jpg)
 ### Standalone
 ### Visual Studio
 ### Xcode
