@@ -1,4 +1,4 @@
-# vmpusermanual
+# VMP User Manual for [vpand.com](https://vpand.com/)
 [ClangVMP](https://github.com/vpand/vmpusermanual/blob/main/ClangVMP.md) and [PhoneVMP](https://github.com/vpand/vmpusermanual/blob/main/PhoneVMP.md) user manual.
 
 ## UltimateVMP
