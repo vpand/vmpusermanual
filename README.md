@@ -1,2 +1,8 @@
 # vmpusermanual
-ClangVMP and PhoneVMP user manual.
+[ClangVMP](https://github.com/vpand/vmpusermanual/ClangVMP.md) and [PhoneVMP](https://github.com/vpand/vmpusermanual/PhoneVMP.md) user manual.
+
+## UltimateVMP
+**UltimateVMP** (Ultimate Virtual Machine Protection), is an **arm/arm64/x86/x86_64** assembly level code virtualization encryption software for Darwin (**macOS/iOS**), Linux (Ubuntu/**Android**), **Windows** and other operating systems. It re-encodes the binary instructions of the target function into a private instruction format and then interprets the encoded instruction directly at run time. Unlike low-intensity code encryption such as obfuscation and shell, VMP code will not restore the original instruction throughout the whole execution process, so it can achieve high code encryption strength, greatly raising the threshold of reverse engineering, so as to achieve the purpose of protecting software assets. UltimateVMP currently supports platforms including **macOS, iOS, Linux, Android, Windows**, and supported architectures including **x86, x86_64, arm, and arm64**.
+
+UltimateVMP includes two products. One is [ClangVMP](https://github.com/vpand/vmpusermanual/ClangVMP.md)(based on the **Clang** compiler), it encodes **C/C++/ObjC**/etc. function into VMP data during compilation process. The other is [PhoneVMP](https://github.com/vpand/vmpusermanual/PhoneVMP.md), it encodes assembly instructions into VMP data from binary file(like **MachO/ELF/PE**). All of them are based on virtual processor infrastructure UraniumVM from [vpand.com](https://vpand.com/). Their relationship is as following:
+![relationship](https://raw.githubusercontent.com/vpand/imgres/main/ultimatevmp/relationship-1.svg)
