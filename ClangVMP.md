@@ -44,14 +44,51 @@ current host hwid: mac-arm64-01ac2ad20eeca7b90f408d6be2275192
 ```
 ![vpaclangvmp](https://raw.githubusercontent.com/vpand/imgres/main/ultimatevmp/vpaclangvmp.jpg)
 ### Standalone
+The standalone installation type is suitable for any platform, it's usually for user who likes **makefile**, **ninja** or **cmake** CLI build system. After installation, it's nothing special as the generic clang compiler but needs a clangvmp.json(The VMP configuration section has detailed description) configuration file to apply its virtualized compilation feature. 
+
+Its bin and lib directory are as following(Windows and linux are nearly the same):
+![clangvmpbin](https://raw.githubusercontent.com/vpand/imgres/main/ultimatevmp/clangvmpbin.png)
+![clangvmplib](https://raw.githubusercontent.com/vpand/imgres/main/ultimatevmp/clangvmplib.png)
 ### Visual Studio
 ### Xcode
+The Xcode installation type will install ClangVMP as a toolchain package into Xcode.app. Its fixed installation path is:
+```
+/Applications/Xcode.app/Contents/Developer/Toolchains/ClangVMP.xctoolchain
+```
+During the installation, you'll be confirmed to input the root password to move ClangVMP toolchain to Xcode.app internal directory.
+
+![clangvmpinstallxcode](https://raw.githubusercontent.com/vpand/imgres/main/ultimatevmp/clangvmpinstallxcode.png)
+If you enter the right root password, then everything is ready for you to apply virtualized compilation in Xcode IDE. 
+
+![langvmpxctoolchain](https://raw.githubusercontent.com/vpand/imgres/main/ultimatevmp/clangvmpxctoolchain.png)
 ### Android NDK
+The Android NDK installation type will install ClangVMP into Android NDK LLVM toolchain. Before installation, you should select the llvm root directory of the target NDK toolchain manually.
+
+![clangvmpndkroot](https://raw.githubusercontent.com/vpand/imgres/main/ultimatevmp/clangvmpndkroot.png)
+After installation, the ndk llvm toolchain directory will be as following:
+
+![clangvmpinstallndk](https://raw.githubusercontent.com/vpand/imgres/main/ultimatevmp/clangvmpinstallndk.png)
 ### Linux
 ## IDE Configuration
 ### Visual Studio
 ### Xcode
+You can switch the Xcode and ClangVMP toolchain from main menu Xcode/Toolchains at anytime.
+
+![clangvmpswitchtoolchain](https://raw.githubusercontent.com/vpand/imgres/main/ultimatevmp/clangvmpswitchtoolchain.png)
 ## VMP Configuration
+Unlike other Clang compiler-based source code encryption products such as **OLLVM**, ClangVMP doesn't specify the encryption configuration using command line arguments or attribute annotations, but instead uses a **clangvmp.json** encryption configuration file to specify the encryption options. The generic format of clangvmp.json is as following:
+```json
+{
+    "source_name.ext" : {
+        "vmpre" : ["symbol_regexpr"],
+        "obfre" : ["symbol_regexpr"]
+    }
+}
+```
+During compilation, the loading rule for the clangvmp.json configuration file is:
+ * Firstly, look for clangvmp.json in the folder where the input source code file is located, if found, use this configuration, otherwise go to Secondly; 
+ * Secondly, look for clangvmp.json in the current working path of the compiler (for Xcode, this is the path where xcodeproj is located; for NDK, this is the parent directory of jni). 
+If found, use this configuration, otherwise turn to normal compilation; 
 ### Key source file
 ### Key vmpre
 ### Key obfre
