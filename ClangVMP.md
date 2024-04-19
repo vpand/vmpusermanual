@@ -86,9 +86,10 @@ Unlike other Clang compiler-based source code encryption products such as **OLLV
 }
 ```
 During compilation, the loading rule for the clangvmp.json configuration file is:
- * Firstly, look for clangvmp.json in the folder where the input source code file is located, if found, use this configuration, otherwise go to Secondly; 
- * Secondly, look for clangvmp.json in the current working path of the compiler (for Xcode, this is the path where xcodeproj is located; for NDK, this is the parent directory of jni). 
-If found, use this configuration, otherwise turn to normal compilation; 
+ * **Firstly**, look for clangvmp.json in the folder where the input **source code file** is located, if found, use this configuration, otherwise go to Secondly; 
+ * **Secondly**, look for clangvmp.json in the **current working path** of the compiler (for Xcode, this is the path where xcodeproj is located; for NDK, this is the parent directory of jni). 
+If found, use this configuration, otherwise turn to normal compilation;
+![clangvmpjsonsearch](https://raw.githubusercontent.com/vpand/imgres/main/ultimatevmp/clangvmp.json-1.svg)
 ### Key source file
 ### Key vmpre
 ### Key obfre
