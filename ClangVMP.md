@@ -1,4 +1,8 @@
-# ClangVMP User Manual
+v1.0.0
+![vpand.com](https://raw.githubusercontent.com/vpand/imgres/main/vpand.png)
+[vpand.com](https://vpand.com/)
+#
+# <p style="text-align:center;">ClangVMP User Manual</p>
 ## UltimateVMP
 **UltimateVMP** (Ultimate Virtual Machine Protection), is an **arm/arm64/x86/x86_64** assembly level code virtualization encryption software for Darwin (**macOS/iOS**), **Linux** (Ubuntu/**Android**), **Windows** and other operating systems. It re-encodes the binary instructions of the target function into a private instruction format and then interprets the encoded instruction directly at run time. Unlike low-intensity code encryption such as obfuscation and shell, VMP code will not restore the original instruction throughout the whole execution process, so it can achieve high code encryption strength, greatly raising the threshold of reverse engineering, so as to achieve the purpose of protecting software assets. UltimateVMP currently supports platforms including **macOS, iOS, Linux, Android, Windows**, and supported architectures including **x86, x86_64, arm, and arm64**.
 
@@ -61,17 +65,8 @@ Its bin and lib directory are as following(Windows and linux are nearly the same
 ### Visual Studio
 The Visual Studio installation type will install ClangVMP as a llvm toolchain for its project solution file. Its bin directory is as following:
 ![clangvmpvsbin](https://raw.githubusercontent.com/vpand/imgres/main/ultimatevmp/clangvmpvsbin.png)
-To apply this llvm like toolchain to Visual Studio project, you should do the following steps:
- * 1. Copy the Directory.build.props to your .sln located directory:
-![clangvmpvsset0](https://raw.githubusercontent.com/vpand/imgres/main/ultimatevmp/clangvmpvsset0.png)
- * 2. In Visual Studio Solution Property Pages, set General/Platform Toolset as LLVM(clang-cl):
-![clangvmpvsset1](https://raw.githubusercontent.com/vpand/imgres/main/ultimatevmp/clangvmpvsset1.png)
- * 3. In Visual Studio Solution Property Pages, set Advanced/LLVM Toolset Version as LLVM-Main-Version.Year.Month(e.g.: 19.2024.3, this is defined by ClangVMP llvm toolchain):
-![clangvmpvsset2](https://raw.githubusercontent.com/vpand/imgres/main/ultimatevmp/clangvmpvsset2.png)
- * 4. Make a test build to check whether everything goes well:
-![clangvmpvsbuild](https://raw.githubusercontent.com/vpand/imgres/main/ultimatevmp/clangvmpvsbuild.png)
 ### Xcode
-The Xcode installation type will install ClangVMP as a toolchain package into Xcode.app. Its fixed installation path is:
+The Xcode installation type will install ClangVMP as a toolchain package into **Xcode.app**. Its fixed installation path is:
 ```
 /Applications/Xcode.app/Contents/Developer/Toolchains/ClangVMP.xctoolchain
 ```
@@ -82,19 +77,49 @@ If you enter the right root password, then everything is ready for you to apply 
 
 ![langvmpxctoolchain](https://raw.githubusercontent.com/vpand/imgres/main/ultimatevmp/clangvmpxctoolchain.png)
 ### Android NDK
-The Android NDK installation type will install ClangVMP into Android NDK LLVM toolchain. Before installation, you should select the llvm root directory of the target NDK toolchain manually.
+The Android NDK installation type will install ClangVMP into **Android NDK LLVM** toolchain. Before installation, you should select the llvm root directory of the target NDK toolchain manually.
 
 ![clangvmpndkroot](https://raw.githubusercontent.com/vpand/imgres/main/ultimatevmp/clangvmpndkroot.png)
 After installation, the ndk llvm toolchain directory will be as following:
 
 ![clangvmpinstallndk](https://raw.githubusercontent.com/vpand/imgres/main/ultimatevmp/clangvmpinstallndk.png)
 ### Linux
+The Linux installation type will install ClangVMP as a cli tool into **/usr/local**. Its fixed installation path is:
+```
+/usr/local/clangvmp
+```
+During the installation, you'll be confirmed to input the root password to move ClangVMP toolchain to /usr/local directory.
+
+![clangvmpinstalllinux](https://raw.githubusercontent.com/vpand/imgres/main/ultimatevmp/clangvmpinstalllinux.png)
+If you enter the right root password, then everything is ready for you to apply virtualized compilation with clang-vmp cli compiler. 
+
+![clangvmplinux](https://raw.githubusercontent.com/vpand/imgres/main/ultimatevmp/clangvmplinux.png)
 ## IDE Configuration
 ### Visual Studio
+To apply this llvm like toolchain to Visual Studio project, you should do the following steps:
+ * 1. Copy the **Directory.build.props** to your **.sln** located directory, it's a xml file used to let Visual Studio locate this llvm toolchain:
+```xml
+<Project>
+  <PropertyGroup>
+    <LLVMInstallDir>/.../VPAssistant/product/clangvmp</LLVMInstallDir>
+    <LLVMToolsVersion>19.2024.3</LLVMToolsVersion>
+  </PropertyGroup>
+</Project>
+```
+![clangvmpvsset0](https://raw.githubusercontent.com/vpand/imgres/main/ultimatevmp/clangvmpvsset0.png)
+ * 2. In Visual Studio Solution Property Pages, set General/Platform Toolset as **LLVM(clang-cl)**:
+![clangvmpvsset1](https://raw.githubusercontent.com/vpand/imgres/main/ultimatevmp/clangvmpvsset1.png)
+ * 3. In Visual Studio Solution Property Pages, set Advanced/LLVM Toolset Version as LLVM-Main-Version.Year.Month(e.g.: **19.2024.3**, this is defined by ClangVMP llvm toolchain):
+![clangvmpvsset2](https://raw.githubusercontent.com/vpand/imgres/main/ultimatevmp/clangvmpvsset2.png)
+ * 4. Make a test build to check whether everything goes well:
+![clangvmpvsbuild](https://raw.githubusercontent.com/vpand/imgres/main/ultimatevmp/clangvmpvsbuild.png)
 ### Xcode
-You can switch the Xcode and ClangVMP toolchain from main menu Xcode/Toolchains at anytime.
+You can switch the Xcode and ClangVMP toolchain from main menu **Xcode/Toolchains** at anytime.
 
 ![clangvmpswitchtoolchain](https://raw.githubusercontent.com/vpand/imgres/main/ultimatevmp/clangvmpswitchtoolchain.png)
+Make a test build to check whether everything goes well:
+
+![clangvmpxcbuild](https://raw.githubusercontent.com/vpand/imgres/main/ultimatevmp/clangvmpxcbuild.png)
 ## VMP Configuration
 Unlike other Clang compiler-based source code encryption products such as **OLLVM**, ClangVMP doesn't specify the encryption configuration using command line arguments or attribute annotations, but instead uses a **clangvmp.json** encryption configuration file to specify the encryption options. The generic format of clangvmp.json is as following:
 ```json
@@ -110,12 +135,13 @@ During compilation, the loading rule for the clangvmp.json configuration file is
  * **Secondly**, look for clangvmp.json in the **current working path** of the compiler (for Xcode, this is the path where xcodeproj is located; for NDK, this is the parent directory of jni). 
 If found, use this configuration, otherwise turn to normal compilation;
 ![clangvmpjsonsearch](https://raw.githubusercontent.com/vpand/imgres/main/ultimatevmp/clangvmp.json-1.svg)
+
 ### Key source file
-source_name.ext: source code file name including its extension, such as helloworld.c, helloworld.cpp, helloworld.cc, helloworld.m and helloworld.mm. If this file name as a key in clangvmp.json, then the compiler will apply its symbol array to virtualize or obfuscate that matched function.
+**source_name.ext**: source code file name including its extension, such as helloworld.c, helloworld.cpp, helloworld.cc, helloworld.m and helloworld.mm. If this file name as a key in clangvmp.json, then the compiler will apply its symbol array to virtualize or obfuscate that matched function.
 ### Key vmpre
-vmpre(VMP regular expression): any function name symbol which matches this regular expression array will be **VMP virtualized**. e.g.: ".*" means all symbols, "vmpfn" means symbols contain substring vmpfn.
+**vmpre**(VMP regular expression): any function name symbol which matches this regular expression array will be **VMP virtualized**. e.g.: ".*" means all symbols, "vmpfn" means symbols contain substring vmpfn. Visit [Regular Expression](https://en.wikipedia.org/wiki/Regular_expression) for more information. 
 ### Key obfre
-obfre(Obfuscation regular expression): any function name symbol which matches this regular expression array will be **OLLVM obfuscated**.
+**obfre**(Obfuscation regular expression): any function name symbol which matches this regular expression array will be **OLLVM obfuscated**.
 ### Demo
 The following clangvmp.json means:
  * All the function symbols in **UVMInterpreter.cpp** contain substring "interp" will be virtualized, contain substring "main" will be obfuscated.
@@ -132,80 +158,102 @@ The following clangvmp.json means:
     }
 }
 ```
-## Raw vs VMP
-### Raw
-Normal compilation with clang compiler, we'll get the following assembly function:
-```assembly
-.text._Z7do_mainiPPKc:0000000000000004 ; int do_main(int argc, const unsigned __int8 **argv)
-.text._Z7do_mainiPPKc:0000000000000004                 EXPORT _Z7do_mainiPPKc
-.text._Z7do_mainiPPKc:0000000000000004 _Z7do_mainiPPKc                         ; CODE XREF: main+24↓p
-.text._Z7do_mainiPPKc:0000000000000004
-.text._Z7do_mainiPPKc:0000000000000004 var_90          = -0x90
-.text._Z7do_mainiPPKc:0000000000000004 ptr             = -0x88
-.text._Z7do_mainiPPKc:0000000000000004 var_8           = -8
-.text._Z7do_mainiPPKc:0000000000000004 var_s0          =  0
-.text._Z7do_mainiPPKc:0000000000000004 var_s10         =  0x10
-.text._Z7do_mainiPPKc:0000000000000004 var_s20         =  0x20
-.text._Z7do_mainiPPKc:0000000000000004 var_s30         =  0x30
-.text._Z7do_mainiPPKc:0000000000000004 var_s40         =  0x40
-.text._Z7do_mainiPPKc:0000000000000004 var_s50         =  0x50
-.text._Z7do_mainiPPKc:0000000000000004
-.text._Z7do_mainiPPKc:0000000000000004 ; __unwind {
-.text._Z7do_mainiPPKc:0000000000000004                 SUB             SP, SP, #0xF0
-.text._Z7do_mainiPPKc:0000000000000008                 STP             X29, X30, [SP,#0x90+var_s0]
-.text._Z7do_mainiPPKc:000000000000000C                 STP             X28, X27, [SP,#0x90+var_s10]
-.text._Z7do_mainiPPKc:0000000000000010                 STP             X26, X25, [SP,#0x90+var_s20]
-.text._Z7do_mainiPPKc:0000000000000014                 STP             X24, X23, [SP,#0x90+var_s30]
-.text._Z7do_mainiPPKc:0000000000000018                 STP             X22, X21, [SP,#0x90+var_s40]
-.text._Z7do_mainiPPKc:000000000000001C                 STP             X20, X19, [SP,#0x90+var_s50]
-.text._Z7do_mainiPPKc:0000000000000020                 ADD             X29, SP, #0x90
-.text._Z7do_mainiPPKc:0000000000000024                 MRS             X8, #3, c13, c0, #2
-.text._Z7do_mainiPPKc:0000000000000028 argc = X19                              ; int
-.text._Z7do_mainiPPKc:0000000000000028                 MOV             W19, W0
-.text._Z7do_mainiPPKc:000000000000002C                 STR             X8, [SP,#0x90+var_90]
-.text._Z7do_mainiPPKc:0000000000000030                 ADRP            X0, #byte_180@PAGE
-.text._Z7do_mainiPPKc:0000000000000034                 ADD             X0, X0, #byte_180@PAGEOFF ; name
-.text._Z7do_mainiPPKc:0000000000000038                 LDR             X8, [X8,#0x28]
-.text._Z7do_mainiPPKc:000000000000003C                 STUR            X8, [X29,#var_8]
-.text._Z7do_mainiPPKc:0000000000000040                 BL              getenv
-.text._Z7do_mainiPPKc:0000000000000044                 CMP             W19, #1
-.text._Z7do_mainiPPKc:0000000000000048                 B.LT            loc_E8
-.text._Z7do_mainiPPKc:000000000000004C                 MOV             W20, WZR
-.text._Z7do_mainiPPKc:0000000000000050                 ADD             X27, SP, #0x90+ptr
-.text._Z7do_mainiPPKc:0000000000000054                 ADRP            X21, #byte_227@PAGE
-.text._Z7do_mainiPPKc:0000000000000058                 ADD             X21, X21, #byte_227@PAGEOFF
-.text._Z7do_mainiPPKc:000000000000005C                 ADRP            X22, #byte_239@PAGE
-.text._Z7do_mainiPPKc:0000000000000060                 ADD             X22, X22, #byte_239@PAGEOFF
-.text._Z7do_mainiPPKc:0000000000000064                 ADRP            X23, #byte_23B@PAGE
-.text._Z7do_mainiPPKc:0000000000000068                 ADD             X23, X23, #byte_23B@PAGEOFF
-.text._Z7do_mainiPPKc:000000000000006C                 ADRP            X28, #byte_1E7@PAGE
-.text._Z7do_mainiPPKc:0000000000000070                 ADD             X28, X28, #byte_1E7@PAGEOFF
-.text._Z7do_mainiPPKc:0000000000000074                 ADRP            X26, #byte_1E2@PAGE
-.text._Z7do_mainiPPKc:0000000000000078                 ADD             X26, X26, #byte_1E2@PAGEOFF
-.text._Z7do_mainiPPKc:000000000000007C                 ADRP            X24, #byte_18B@PAGE
-.text._Z7do_mainiPPKc:0000000000000080 i = X20                                 ; int
-.text._Z7do_mainiPPKc:0000000000000080                 ADD             X24, X24, #byte_18B@PAGEOFF
-.text._Z7do_mainiPPKc:0000000000000084
-.text._Z7do_mainiPPKc:0000000000000084 loc_84                                  ; CODE XREF: do_main(int,char const**)+E0↓j
-.text._Z7do_mainiPPKc:0000000000000084                 MOV             X0, X21 ; filename
-.text._Z7do_mainiPPKc:0000000000000088                 MOV             X1, X22 ; modes
-.text._Z7do_mainiPPKc:000000000000008C                 BL              fopen
-.text._Z7do_mainiPPKc:0000000000000090                 MOV             X25, X0
-.text._Z7do_mainiPPKc:0000000000000094                 ADD             X0, SP, #0x90+ptr ; ptr
-.text._Z7do_mainiPPKc:0000000000000098                 MOV             W1, #1  ; size
-.text._Z7do_mainiPPKc:000000000000009C                 MOV             W2, #0x7F ; n
-.text._Z7do_mainiPPKc:00000000000000A0                 MOV             X3, X25 ; stream
-.text._Z7do_mainiPPKc:00000000000000A4                 BL              fread
-.text._Z7do_mainiPPKc:00000000000000A8                 STRB            WZR, [X27,X0]
-.text._Z7do_mainiPPKc:00000000000000AC                 MOV             X0, X25 ; stream
-.text._Z7do_mainiPPKc:00000000000000B0                 BL              fclose
-.text._Z7do_mainiPPKc:00000000000000B4                 ADD             X0, SP, #0x90+ptr ; haystack
-.text._Z7do_mainiPPKc:00000000000000B8                 MOV             X1, X23 ; needle
-.text._Z7do_mainiPPKc:00000000000000BC                 BL              strstr
-.text._Z7do_mainiPPKc:00000000000000C0                 CMP             X0, #0
-.text._Z7do_mainiPPKc:00000000000000C4                 MOV             X0, X24 ; format
+## Raw vs ClangVMP
+Here's the simple C/C++ code, let's see how the normal and virtualized compilation are going to generate the final assembly instructions.
+```c
+static bool am_I_being_debugged(void) {
+  FILE *fp = fopen("/proc/self/status", "r");
+  char status[128];
+  size_t rd = fread(status, 1, sizeof(status) - 1, fp);
+  status[rd] = 0;
+  fclose(fp);
+  return strstr(status, "TracerPid:\t0") == nullptr;
+}
+
+int __attribute__((noinline)) do_main(int argc, const char *argv[]) {
+  if (!getenv("NO_ANTIDBG")) {
+    anti_debug();
+  }
+
+  // modify register to continue
+  for (int i = 0; i < argc; i++) {
+    printf(
+      "You should change the register to quit this infinite loop %d.\n"
+      "I'm being debugged(%s).\n", 
+      i, 
+      am_I_being_debugged() ? "true" : "false");
+    sleep(2);
+  }
+
+  // what a nice day...
+  puts("Have fun with A64Dbg UraniumVM virtualization debug mode~");
+  return 0;
+}
 ```
-If we decompile it in IDA or any other decompiler tool, we'll get a perfect pseudo C source code implementation like this:
+### Raw
+The normal compilation with clang compiler, we'll get the following assembly function:
+```assembly
+do_main:0004 ; int do_main(int argc, const unsigned __int8 **argv)
+do_main:0004                 EXPORT _Z7do_mainiPPKc
+do_main:0004 _Z7do_mainiPPKc                         ; CODE XREF: main+24↓p
+do_main:0004
+do_main:0004 ; __unwind {
+do_main:0004                 SUB             SP, SP, #0xF0
+do_main:0008                 STP             X29, X30, [SP,#0x90+var_s0]
+do_main:000C                 STP             X28, X27, [SP,#0x90+var_s10]
+do_main:0010                 STP             X26, X25, [SP,#0x90+var_s20]
+do_main:0014                 STP             X24, X23, [SP,#0x90+var_s30]
+do_main:0018                 STP             X22, X21, [SP,#0x90+var_s40]
+do_main:001C                 STP             X20, X19, [SP,#0x90+var_s50]
+do_main:0020                 ADD             X29, SP, #0x90
+do_main:0024                 MRS             X8, #3, c13, c0, #2
+do_main:0028 argc = X19                              ; int
+do_main:0028                 MOV             W19, W0
+do_main:002C                 STR             X8, [SP,#0x90+var_90]
+do_main:0030                 ADRP            X0, #byte_180@PAGE
+do_main:0034                 ADD             X0, X0, #byte_180@PAGEOFF ; name
+do_main:0038                 LDR             X8, [X8,#0x28]
+do_main:003C                 STUR            X8, [X29,#var_8]
+do_main:0040                 BL              getenv
+do_main:0044                 CMP             W19, #1
+do_main:0048                 B.LT            loc_E8
+do_main:004C                 MOV             W20, WZR
+do_main:0050                 ADD             X27, SP, #0x90+ptr
+do_main:0054                 ADRP            X21, #byte_227@PAGE
+do_main:0058                 ADD             X21, X21, #byte_227@PAGEOFF
+do_main:005C                 ADRP            X22, #byte_239@PAGE
+do_main:0060                 ADD             X22, X22, #byte_239@PAGEOFF
+do_main:0064                 ADRP            X23, #byte_23B@PAGE
+do_main:0068                 ADD             X23, X23, #byte_23B@PAGEOFF
+do_main:006C                 ADRP            X28, #byte_1E7@PAGE
+do_main:0070                 ADD             X28, X28, #byte_1E7@PAGEOFF
+do_main:0074                 ADRP            X26, #byte_1E2@PAGE
+do_main:0078                 ADD             X26, X26, #byte_1E2@PAGEOFF
+do_main:007C                 ADRP            X24, #byte_18B@PAGE
+do_main:0080 i = X20                                 ; int
+do_main:0080                 ADD             X24, X24, #byte_18B@PAGEOFF
+do_main:0084
+do_main:0084 loc_84                                  ; CODE XREF: do_main(int,char const**)+E0↓j
+do_main:0084                 MOV             X0, X21 ; filename
+do_main:0088                 MOV             X1, X22 ; modes
+do_main:008C                 BL              fopen
+do_main:0090                 MOV             X25, X0
+do_main:0094                 ADD             X0, SP, #0x90+ptr ; ptr
+do_main:0098                 MOV             W1, #1  ; size
+do_main:009C                 MOV             W2, #0x7F ; n
+do_main:00A0                 MOV             X3, X25 ; stream
+do_main:00A4                 BL              fread
+do_main:00A8                 STRB            WZR, [X27,X0]
+do_main:00AC                 MOV             X0, X25 ; stream
+do_main:00B0                 BL              fclose
+do_main:00B4                 ADD             X0, SP, #0x90+ptr ; haystack
+do_main:00B8                 MOV             X1, X23 ; needle
+do_main:00BC                 BL              strstr
+do_main:00C0                 CMP             X0, #0
+do_main:00C4                 MOV             X0, X24 ; format
+...
+```
+If we decompile it in IDA or any other decompiler tool, we'll get a perfect pseudo C source code implementation like this, nearly the original source code:
 ```c
 __int64 __fastcall do_main(int argc, const unsigned __int8 **argv)
 {
@@ -246,55 +294,38 @@ __int64 __fastcall do_main(int argc, const unsigned __int8 **argv)
   return result;
 }
 ```
-### VMP
-Virtualized compilation with clangvmp compiler, we'll get the following assembly function:
+### ClangVMP
+The virtualized compilation with clangvmp compiler, we'll get the following assembly function:
 ```assembly
-.text._Z7do_mainiPPKc:0000000000000004 ; __int64 __fastcall do_main(int, const char **)
-.text._Z7do_mainiPPKc:0000000000000004                 EXPORT _Z7do_mainiPPKc
-.text._Z7do_mainiPPKc:0000000000000004 _Z7do_mainiPPKc                         ; DATA XREF: .data.rel.ro..L.vpand_com_ClangVMP_0:0000000000000398↓o
-.text._Z7do_mainiPPKc:0000000000000004
-.text._Z7do_mainiPPKc:0000000000000004 var_400         = -0x400
-.text._Z7do_mainiPPKc:0000000000000004 var_3F0         = -0x3F0
-.text._Z7do_mainiPPKc:0000000000000004 var_3E0         = -0x3E0
-.text._Z7do_mainiPPKc:0000000000000004 var_3D0         = -0x3D0
-.text._Z7do_mainiPPKc:0000000000000004 var_3C0         = -0x3C0
-.text._Z7do_mainiPPKc:0000000000000004 var_3B0         = -0x3B0
-.text._Z7do_mainiPPKc:0000000000000004 var_3A0         = -0x3A0
-.text._Z7do_mainiPPKc:0000000000000004 var_390         = -0x390
-.text._Z7do_mainiPPKc:0000000000000004 var_380         = -0x380
-.text._Z7do_mainiPPKc:0000000000000004 var_370         = -0x370
-.text._Z7do_mainiPPKc:0000000000000004 var_360         = -0x360
-.text._Z7do_mainiPPKc:0000000000000004 var_350         = -0x350
-.text._Z7do_mainiPPKc:0000000000000004 var_340         = -0x340
-.text._Z7do_mainiPPKc:0000000000000004 var_330         = -0x330
-.text._Z7do_mainiPPKc:0000000000000004 var_320         = -0x320
-.text._Z7do_mainiPPKc:0000000000000004 var_310         = -0x310
-.text._Z7do_mainiPPKc:0000000000000004
-.text._Z7do_mainiPPKc:0000000000000004 ; __unwind {
-.text._Z7do_mainiPPKc:0000000000000004                 SUB             SP, SP, #0x400
-.text._Z7do_mainiPPKc:0000000000000008                 STP             X0, X1, [SP,#0x400+var_400]
-.text._Z7do_mainiPPKc:000000000000000C                 STP             X2, X3, [SP,#0x400+var_3F0]
-.text._Z7do_mainiPPKc:0000000000000010                 STP             X4, X5, [SP,#0x400+var_3E0]
-.text._Z7do_mainiPPKc:0000000000000014                 STP             X6, X7, [SP,#0x400+var_3D0]
-.text._Z7do_mainiPPKc:0000000000000018                 STP             X8, X9, [SP,#0x400+var_3C0]
-.text._Z7do_mainiPPKc:000000000000001C                 STP             X10, X11, [SP,#0x400+var_3B0]
-.text._Z7do_mainiPPKc:0000000000000020                 STP             X12, X13, [SP,#0x400+var_3A0]
-.text._Z7do_mainiPPKc:0000000000000024                 STP             X14, X15, [SP,#0x400+var_390]
-.text._Z7do_mainiPPKc:0000000000000028                 STP             X16, X17, [SP,#0x400+var_380]
-.text._Z7do_mainiPPKc:000000000000002C                 STP             X18, X19, [SP,#0x400+var_370]
-.text._Z7do_mainiPPKc:0000000000000030                 STP             X20, X21, [SP,#0x400+var_360]
-.text._Z7do_mainiPPKc:0000000000000034                 STP             X22, X23, [SP,#0x400+var_350]
-.text._Z7do_mainiPPKc:0000000000000038                 STP             X24, X25, [SP,#0x400+var_340]
-.text._Z7do_mainiPPKc:000000000000003C                 STP             X26, X27, [SP,#0x400+var_330]
-.text._Z7do_mainiPPKc:0000000000000040                 STP             X28, X29, [SP,#0x400+var_320]
-.text._Z7do_mainiPPKc:0000000000000044                 STP             X30, X17, [SP,#0x400+var_310]
-.text._Z7do_mainiPPKc:0000000000000048                 BL              vpand_com_ClangVMP_9d4bf2e9b10ef523_1
-.text._Z7do_mainiPPKc:000000000000004C                 MOV             X3, X0
-.text._Z7do_mainiPPKc:0000000000000050                 BL              vpand_com_ClangVMP_9d4bf2e9b10ef523_0
-.text._Z7do_mainiPPKc:0000000000000054                 MOV             X2, #0
-.text._Z7do_mainiPPKc:0000000000000058                 B               vpand_com_ClangVMP_entry
+do_main:0004 ; __int64 __fastcall do_main(int, const char **)
+do_main:0004                 EXPORT _Z7do_mainiPPKc
+do_main:0004 _Z7do_mainiPPKc                         ; DATA XREF: .data.rel.ro..L.vpand_com_ClangVMP_0:0398↓o
+do_main:0004
+do_main:0004 ; __unwind {
+do_main:0004                 SUB             SP, SP, #0x400
+do_main:0008                 STP             X0, X1, [SP,#0x400+var_400]
+do_main:000C                 STP             X2, X3, [SP,#0x400+var_3F0]
+do_main:0010                 STP             X4, X5, [SP,#0x400+var_3E0]
+do_main:0014                 STP             X6, X7, [SP,#0x400+var_3D0]
+do_main:0018                 STP             X8, X9, [SP,#0x400+var_3C0]
+do_main:001C                 STP             X10, X11, [SP,#0x400+var_3B0]
+do_main:0020                 STP             X12, X13, [SP,#0x400+var_3A0]
+do_main:0024                 STP             X14, X15, [SP,#0x400+var_390]
+do_main:0028                 STP             X16, X17, [SP,#0x400+var_380]
+do_main:002C                 STP             X18, X19, [SP,#0x400+var_370]
+do_main:0030                 STP             X20, X21, [SP,#0x400+var_360]
+do_main:0034                 STP             X22, X23, [SP,#0x400+var_350]
+do_main:0038                 STP             X24, X25, [SP,#0x400+var_340]
+do_main:003C                 STP             X26, X27, [SP,#0x400+var_330]
+do_main:0040                 STP             X28, X29, [SP,#0x400+var_320]
+do_main:0044                 STP             X30, X17, [SP,#0x400+var_310]
+do_main:0048                 BL              vpand_com_ClangVMP_9d4bf2e9b10ef523_1
+do_main:004C                 MOV             X3, X0
+do_main:0050                 BL              vpand_com_ClangVMP_9d4bf2e9b10ef523_0
+do_main:0054                 MOV             X2, #0
+do_main:0058                 B               vpand_com_ClangVMP_entry
 ```
-If we decompile it in IDA or any other decompiler tool, we'll get a perfect pseudo C source code implementation like this:
+If we decompile it in IDA or any other decompiler tool, we'll get a fixed pseudo C source code implementation like this, which will always keeps this kind of instruction sequence, saving register context and then entering ClangVMP virtual machine runtime library:
 ```c
 __int64 __usercall do_main@<X0>(const char **a1@<X1>, __int64 a2@<X0>, __int64 a3@<X2>, __int64 a4@<X3>, __int64 a5@<X4>, __int64 a6@<X5>, __int64 a7@<X6>, __int64 a8@<X7>, __int64 a9@<X8>)
 {
@@ -306,9 +337,9 @@ __int64 __usercall do_main@<X0>(const char **a1@<X1>, __int64 a2@<X0>, __int64 a
   return vpand_com_ClangVMP_entry(v10);
 }
 ```
-Oops, we can see nothing about this function, all of the raw instructions are encoded as ClangVMP runtime data. As so, reverse engineering will be extremely hard. This is the core value of ClangVMP.
+Oops, we can see nothing about this function, all of the raw instructions are encoded as ClangVMP runtime data. **As so, reverse engineering will be extremely hard. This is the core value of ClangVMP**.
 ## Trial version
-The default installation without a valid license is a trial version for code virtualized compilation test, the result cannot run. If you want to apply it to your real products, please contact us to buy a license.
+The default installation without a valid license is a trial version for **code virtualized compilation test**, the result **cannot run**. If you want to apply it to your real products, please contact us to buy a license.
 ```shell
 ClangVMP@vpand.com android % ndk-build -B
 [arm64-v8a] Compile++      : antidebug <= antidebug.cpp
@@ -329,6 +360,9 @@ vmp: main
 If you want to upgrade to a licensed version, here's the steps:
  * 1. Contact us to pay for your license;
  * 2. Send your computer os-arch-hwid(copy from VPAssistant startup log) to us;
+```
+22:53:37 I : VP Assistant v1.1.2 (Apr 19 2024), current host hwid: mac-arm64-01ac2ad20eeca7b90f408d6be2275192 .
+```
  * 3. Switch to VPAssistant License tab widget, click Install button to download and install the license file;
 
 ![clangvmplicense](https://raw.githubusercontent.com/vpand/imgres/main/ultimatevmp/clangvmplicense.jpg)
@@ -347,7 +381,7 @@ vmp: main
 ```
 ## Contact us
 ### Email
-If you have any questions or problems on our products, feel free to contact us via email at anytime: 
+If you have any questions or problems on our products or services, feel free to contact us via email at anytime: 
  * **neoliu2011@gmail.com**
 ### We-Media
 Till now, we-media is our main operation method, you can also contact us via the following platforms:
@@ -356,3 +390,16 @@ Till now, we-media is our main operation method, you can also contact us via the
  * [Reddit](https://www.reddit.com/user/JesseVPAND/)
  * [TikTok](https://www.tiktok.com/@jessevpand/)
  * [Instagram](https://www.instagram.com/jessevpand/)
+
+## FAQ
+### Does ClangVMP support 32 bits architecture like x86 or arm?
+In fact, we have finished the development of 32 bits architecture supporting. But besides some embedded system, mobile and desktop platform are nearly all x86_64 or arm64 architecture, so we haven't released it to current ClangVMP version. If you do need this kind of feature, please let us konw.
+
+### What's the price of ClangVMP license ? Could the license be purchased by quarter or month? 
+Visit [vpand.com](https://vpand.com/) to check the price, all of our products are sold at expressly marked price, and the license term is by year.
+
+### When the license is expired, can the code virtualized before run normally?
+Yes, of course, the license is for ClangVMP compiler itself, it has no effect on the compiled code.
+
+### Can I update the license to rebind a new computer?
+In principle, this is not supported. Because all of our license are offline type, it'll never connect to our server to check the license status. So if a license is released, it can not be repealed. This is good for client, as many clients are worried about data leakage. In order to avoid data leakage, offline license is the one and only choice, because we'll never read 1 byte data for our server to check what we need.
