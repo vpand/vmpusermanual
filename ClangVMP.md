@@ -359,6 +359,9 @@ vmp: main
 ## Licensed version
 If you want to upgrade to a licensed version, here's the steps:
  * 1. Contact us to pay for your license;
+```
+The price of ClangVMP: 9000$/year/os-arch/license
+```
  * 2. Send your computer os-arch-hwid(copy from VPAssistant startup log) to us;
 ```
 22:53:37 I : VP Assistant v1.1.2 (Apr 19 2024), current host hwid: mac-arm64-01ac2ad20eeca7b90f408d6be2275192 .
@@ -396,7 +399,7 @@ Till now, we-media is our main operation method, you can also contact us via the
 In fact, we have finished the development of 32 bits architecture supporting. But besides some embedded system, mobile and desktop platform are nearly all x86_64 or arm64 architecture, so we haven't released it to current ClangVMP version. If you do need this kind of feature, please let us konw.
 
 ### What's the price of ClangVMP license ? Could the license be purchased by quarter or month? 
-Visit [vpand.com](https://vpand.com/) to check the price, all of our products are sold at expressly marked price, and the license term is by year.
+The price of ClangVMP is **9000$/year/os-arch/license**, os means **Andoid/iOS/macOS/Linux/Windows**, arch means **x86_64/arm64**.You can visit [vpand.com](https://vpand.com/) to check the latest price policy, all of our products are sold at expressly marked price, and the license term is by year. So till now, quarterly or monthly purchasing is not supported.
 
 ### When the license is expired, can the code virtualized before run normally?
 Yes, of course, the license is for ClangVMP compiler itself, it has no effect on the compiled code.
