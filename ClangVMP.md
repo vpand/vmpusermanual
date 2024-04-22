@@ -6,7 +6,7 @@ v1.1.0
 ## UltimateVMP
 **UltimateVMP** (Ultimate Virtual Machine Protection), is an **arm/arm64/x86/x86_64** assembly level code virtualization encryption software for Darwin (**macOS/iOS**), **Linux** (Ubuntu/**Android**), **Windows** and other operating systems. It re-encodes the binary instructions of the target function into a private instruction format and then interprets the encoded instruction directly at run time. Unlike low-intensity code encryption such as obfuscation and shell, VMP code will not restore the original instruction throughout the whole execution process, so it can achieve high code encryption strength, greatly raising the threshold of reverse engineering, so as to achieve the purpose of protecting software assets. UltimateVMP currently supports platforms including **macOS, iOS, Linux, Android, Windows**, and supported architectures including **x86, x86_64, arm, and arm64**.
 
-UltimateVMP includes two products. One is [ClangVMP](https://github.com/vpand/vmpusermanual/blob/main/ClangVMP.md)(based on the [Clang](https://clang.llvm.org/) compiler), it encodes **C/C++/ObjC/ObjC++/Swift**/etc.(static native programming language) function into VMP data during compilation process. The other is [PhoneVMP](https://github.com/vpand/vmpusermanual/blob/main/PhoneVMP.md), it encodes assembly instructions into VMP data from binary file(like **MachO/ELF/PE**). All of them are based on virtual processor infrastructure [UraniumVM](https://github.com/vpand/uvmsdkusermanual) from [vpand.com](https://vpand.com/). Their relationship is as following:
+UltimateVMP includes two products. One is [ClangVMP](https://github.com/vpand/vmpusermanual/blob/main/ClangVMP.md)(based on the [Clang](https://clang.llvm.org/) compiler), it encodes **C/C++/ObjC/ObjC++/Swift**/etc.(static native programming language) function into VMP data during compilation process. The other is [PhoneVMP](https://github.com/vpand/vmpusermanual/blob/main/PhoneVMP.md), it encodes assembly instructions into VMP data from binary file(like **MachO/ELF/PE**). All of them are based on virtual processor infrastructure [UraniumVM](https://github.com/vpand/uvmsdkusermanual) from [vpand.com](https://vpand.com/). Their relationship is as follows:
 ![relationship](https://raw.githubusercontent.com/vpand/imgres/main/ultimatevmp/relationship-1.svg)
 
 This manual focuses on ClangVMP.
@@ -59,11 +59,11 @@ current host hwid: mac-arm64-01ac2ad20eeca7b90f408d6be2275192
 ### Standalone
 The standalone installation type is suitable for any platform, it's usually for user who likes **makefile**, **ninja** or **cmake** CLI build system. After installation, it's nothing special as the generic clang compiler but needs a clangvmp.json(The VMP configuration section has detailed description) configuration file to apply its virtualized compilation feature. 
 
-Its bin and lib directory are as following(Windows and linux are nearly the same):
+Its bin and lib directory are as follows(Windows and linux are nearly the same):
 ![clangvmpbin](https://raw.githubusercontent.com/vpand/imgres/main/ultimatevmp/clangvmpbin.png)
 ![clangvmplib](https://raw.githubusercontent.com/vpand/imgres/main/ultimatevmp/clangvmplib.png)
 ### Visual Studio
-The Visual Studio installation type will install ClangVMP as a llvm toolchain for its project solution file. Its bin directory is as following:
+The Visual Studio installation type will install ClangVMP as a llvm toolchain for its project solution file. Its bin directory is as follows:
 ![clangvmpvsbin](https://raw.githubusercontent.com/vpand/imgres/main/ultimatevmp/clangvmpvsbin.png)
 ### Xcode
 The Xcode installation type will install ClangVMP as a toolchain package into **Xcode.app**. Its fixed installation path is:
@@ -80,7 +80,7 @@ If you enter the right root password, then everything is ready for you to apply 
 The Android NDK installation type will install ClangVMP into **Android NDK LLVM** toolchain. Before installation, you should select the llvm root directory of the target NDK toolchain manually.
 
 ![clangvmpndkroot](https://raw.githubusercontent.com/vpand/imgres/main/ultimatevmp/clangvmpndkroot.png)
-After installation, the ndk llvm toolchain directory will be as following:
+After installation, the ndk llvm toolchain directory will be as follows:
 
 ![clangvmpinstallndk](https://raw.githubusercontent.com/vpand/imgres/main/ultimatevmp/clangvmpinstallndk.png)
 ### Linux
@@ -135,7 +135,7 @@ If you are using CMake to generate the final build script for Windows, here's th
 cmake .../CMakeLists.txt_dir -DCMAKE_C_COMPILER=.../clangvmp/bin/clang-cl.exe -DCMAKE_CXX_COMPILER=.../clangvmp/bin/clang-cl.exe -DCMAKE_LINKER=.../clangvmp/bin/lld-link.exe -DCMAKE_BUILD_TYPE=Release
 ```
 ## VMP Configuration
-Unlike other Clang compiler-based source code encryption products such as **OLLVM**, ClangVMP doesn't specify the encryption configuration using command line arguments or attribute annotations, but instead uses a **clangvmp.json** encryption configuration file to specify the encryption options. The generic format of clangvmp.json is as following:
+Unlike other Clang compiler-based source code encryption products such as **OLLVM**, ClangVMP doesn't specify the encryption configuration using command line arguments or attribute annotations, but instead uses a **clangvmp.json** encryption configuration file to specify the encryption options. The generic format of clangvmp.json is as follows:
 ```json
 {
     "source_name.ext" : {
