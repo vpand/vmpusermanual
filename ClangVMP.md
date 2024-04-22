@@ -1,4 +1,4 @@
-v1.0.0
+v1.1.0
 ![vpand.com](https://raw.githubusercontent.com/vpand/imgres/main/vpand.png)
 [vpand.com](https://vpand.com/)
 #
@@ -120,6 +120,20 @@ You can switch the Xcode and ClangVMP toolchain from main menu **Xcode/Toolchain
 Make a test build to check whether everything goes well:
 
 ![clangvmpxcbuild](https://raw.githubusercontent.com/vpand/imgres/main/ultimatevmp/clangvmpxcbuild.png)
+## CLI Configuration
+If you prefer command line build system, there's a little detail for you to follow:
+ * **Never use clang-vmp directly but use clang or clang-cl instead**, because the name of clang main program is used as an argument style detector, e.g.: clang-cl uses the **Microsoft cl.exe** argument style, clang uses the **GNU gcc** argument style.
+ * **You must assign clang or lld-link in clangvmp/bin as your linker driver program**, because our custom linker will add the **libRTClangVMP** library to the final link library list. If you use the system default linker, then some errors like undefined symbols from ClangVMP may occur during linking.
+### CMake
+If you are using CMake to generate the final build script for macOS/iOS/Android/Linux, here's the simple cmake example(In this case, clang is the default linker driver, so we don't have to assign the linker manually):
+```shell
+cmake .../CMakeLists.txt_dir -DCMAKE_C_COMPILER=.../clangvmp/bin/clang -DCMAKE_CXX_COMPILER=.../clangvmp/bin/clang -DCMAKE_BUILD_TYPE=Release
+```
+### CMake for Windows
+If you are using CMake to generate the final build script for Windows, here's the simple cmake example(On Windows, the default linker will be directed to system cl or llvm/lld-link, so we have to manually assign the clangvmp/lld-link as the building linker):
+```shell
+cmake .../CMakeLists.txt_dir -DCMAKE_C_COMPILER=.../clangvmp/bin/clang-cl.exe -DCMAKE_CXX_COMPILER=.../clangvmp/bin/clang-cl.exe -DCMAKE_LINKER=.../clangvmp/bin/lld-link.exe -DCMAKE_BUILD_TYPE=Release
+```
 ## VMP Configuration
 Unlike other Clang compiler-based source code encryption products such as **OLLVM**, ClangVMP doesn't specify the encryption configuration using command line arguments or attribute annotations, but instead uses a **clangvmp.json** encryption configuration file to specify the encryption options. The generic format of clangvmp.json is as following:
 ```json
