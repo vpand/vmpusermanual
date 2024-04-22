@@ -41,6 +41,19 @@ current host hwid: mac-arm64-01ac2ad20eeca7b90f408d6be2275192
 ### PhoneVMP
 ## Trial version
 ## Licensed version
+If you want to upgrade to a licensed version, here's the steps:
+ * 1. Contact us to pay for your license;
+```
+The price of PhoneVMP: 5000$/year/os-arch/license
+```
+ * 2. Send your computer os-arch-hwid(copy from VPAssistant startup log) to us;
+```
+22:53:37 I : VP Assistant v1.1.2 (Apr 19 2024), current host hwid: mac-arm64-01ac2ad20eeca7b90f408d6be2275192 .
+```
+ * 3. Switch to VPAssistant License tab widget, click Install button to download and install the license file;
+
+![phonevmplicense](https://raw.githubusercontent.com/vpand/imgres/main/ultimatevmp/phonevmplicense.png)
+
 ## Contact us
 ### Email
 If you have any questions or problems on our products or services, feel free to contact us via email at anytime: 
@@ -54,6 +67,9 @@ Till now, we-media is our main operation method, you can also contact us via the
  * [Instagram](https://www.instagram.com/jessevpand/)
 
 ## FAQ
+### Does PhoneVMP support Windows or Linux?
+In fact, we have finished the development of Windows-PE and Linux-ELF supporting. But we think ClangVMP is much better for desktop platform, so we haven't released it to current PhoneVMP version. If you do need this kind of feature, please let us know.
+
 ### What's the price of PhoneVMP license ? Could the license be purchased by quarter or month? 
 The price of PhoneVMP is **5000$/year/os-arch/license**, os means **Andoid/iOS/macOS**, arch means **x86/x86_64/arm/arm64**.You can visit [vpand.com](https://vpand.com/) to check the latest price policy, all of our products are sold at expressly marked price, and the license term is by year. So till now, quarterly or monthly purchasing is not supported.
 

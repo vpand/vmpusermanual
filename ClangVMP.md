@@ -410,7 +410,7 @@ Till now, we-media is our main operation method, you can also contact us via the
 
 ## FAQ
 ### Does ClangVMP support 32 bits architecture like x86 or arm?
-In fact, we have finished the development of 32 bits architecture supporting. But besides some embedded system, mobile and desktop platform are nearly all x86_64 or arm64 architecture, so we haven't released it to current ClangVMP version. If you do need this kind of feature, please let us konw.
+In fact, we have finished the development of 32 bits architecture supporting. But besides some embedded system, mobile and desktop platform are nearly all x86_64 or arm64 architecture, so we haven't released it to current ClangVMP version. If you do need this kind of feature, please let us know.
 
 ### What's the price of ClangVMP license ? Could the license be purchased by quarter or month? 
 The price of ClangVMP is **9000$/year/os-arch/license**, os means **Andoid/iOS/macOS/Linux/Windows**, arch means **x86_64/arm64**.You can visit [vpand.com](https://vpand.com/) to check the latest price policy, all of our products are sold at expressly marked price, and the license term is by year. So till now, quarterly or monthly purchasing is not supported.
