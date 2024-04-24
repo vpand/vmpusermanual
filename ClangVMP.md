@@ -1,4 +1,4 @@
-v1.1.0
+v1.1.1
 ![vpand.com](https://raw.githubusercontent.com/vpand/imgres/main/vpand.png)
 [vpand.com](https://vpand.com/)
 #
@@ -57,7 +57,7 @@ current host hwid: mac-arm64-01ac2ad20eeca7b90f408d6be2275192
 ```
 ![vpaclangvmp](https://raw.githubusercontent.com/vpand/imgres/main/ultimatevmp/vpaclangvmp.jpg)
 ### Standalone
-The standalone installation type is suitable for any platform, it's usually for user who likes **makefile**, **ninja** or **cmake** CLI build system. After installation, it's nothing special as the generic clang compiler but needs a clangvmp.json(The VMP configuration section has detailed description) configuration file to apply its virtualized compilation feature. 
+The standalone installation type is suitable for any platform, it's usually for user who likes **makefile**, **ninja** or **cmake** CLI build system(but for **exe/dll** build on **Window**, please prefer **Visual Studio** installation type for both CLI and IDE compatible by **clang-cl/lld-link**). After installation, it's nothing special as the generic clang compiler but needs a clangvmp.json(The VMP configuration section has detailed description) configuration file to apply its virtualized compilation feature. 
 
 Its bin and lib directory are as follows(Windows and linux are nearly the same):
 ![clangvmpbin](https://raw.githubusercontent.com/vpand/imgres/main/ultimatevmp/clangvmpbin.png)
@@ -65,6 +65,7 @@ Its bin and lib directory are as follows(Windows and linux are nearly the same):
 ### Visual Studio
 The Visual Studio installation type will install ClangVMP as a llvm toolchain for its project solution file. Its bin directory is as follows:
 ![clangvmpvsbin](https://raw.githubusercontent.com/vpand/imgres/main/ultimatevmp/clangvmpvsbin.png)
+By the way, if you want to build exe/dll on Windows, no matter whether you use Visual Studio or not, the **Visual Studio** installation type should be chosen but **not Standalone**. Because only this kind of installation has **clang-cl.exe/lld-link.exe** which can compile/link exe/dll correctly and is compatible with both CLI like cmake and IDE like Visual Studio.
 ### Xcode
 The Xcode installation type will install ClangVMP as a toolchain package into **Xcode.app**. Its fixed installation path is:
 ```
