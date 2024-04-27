@@ -344,7 +344,7 @@ Till now, we-media is our main operation method, you can also contact us via the
  * [Facebook](https://www.facebook.com/people/Jesse-Liu/61555693542797/)
  * [YouTube](https://www.youtube.com/@JesseVPAND/)
  * [Reddit](https://www.reddit.com/user/JesseVPAND/)
- * [TikTok](https://www.tiktok.com/@jessevpand/)
+ * [X](https://twitter.com/JesseVPAND/)
  * [Instagram](https://www.instagram.com/jessevpand/)
 
 ## FAQ
